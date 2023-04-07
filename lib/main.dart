@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'category_screen.dart';
+import 'screens/category_meals_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,30 +15,26 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.red,
+        accentColor: Colors.yellow,
+        fontFamily: 'DidactGothic',
+        textTheme: ThemeData.dark().textTheme.copyWith(
+              bodyText1: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 50,
+              ),
+              bodyText2: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(),
+      // home: CategoriesScreen(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => CategoriesScreen(),
+        MealCategoryS.routName: (context) => MealCategoryS(),
+      },
     );
   }
 }
