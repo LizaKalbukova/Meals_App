@@ -23,22 +23,23 @@ class MealCategoryS extends StatelessWidget {
       return meal.categories.contains(categoryId);
     }).toList();
     return Scaffold(
-        appBar: AppBar(
-          title: Text(categoryTitle!),
-        ),
-        body: ListView.builder(
-          itemBuilder: (context, index) {
-            return MealCard(
-              ingredients: filteredMeal[index].ingredients,
-              id: filteredMeal[index].id,
-              title: filteredMeal[index].title,
-              imageUrl: filteredMeal[index].imageUrl,
-              complexity: filteredMeal[index].complexity,
-              duration: filteredMeal[index].duration,
-              affordability: filteredMeal[index].affordability,
-            );
-          },
-          itemCount: filteredMeal.length,
-        ));
+      appBar: AppBar(
+        title: Text(categoryTitle!),
+      ),
+      body: ListView.builder(
+        itemBuilder: (context, index) {
+          return MealCard(
+            ingredients: filteredMeal[index].ingredients,
+            id: filteredMeal[index].id,
+            title: filteredMeal[index].title,
+            imageUrl: filteredMeal[index].imageUrl,
+            complexity: filteredMeal[index].complexity,
+            duration: filteredMeal[index].duration,
+            affordability: filteredMeal[index].affordability,
+          );
+        },
+        itemCount: filteredMeal.length,
+      ),
+    );
   }
 }
