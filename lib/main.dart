@@ -3,6 +3,7 @@ import 'category_screen.dart';
 import 'screens/category_meals_screen.dart';
 import 'screens/tab_screen.dart';
 import 'screens/meal_detail.dart';
+import 'screens/fiters_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -38,6 +39,7 @@ class MyApp extends StatelessWidget {
         //  '/': (context) => CategoriesScreen(),
         MealCategoryS.routName: (context) => MealCategoryS(),
         MealDetail.routName: (context) => MealDetail(),
+        FilteredScreen.routName: (context) => FilteredScreen(),
       },
     );
   }

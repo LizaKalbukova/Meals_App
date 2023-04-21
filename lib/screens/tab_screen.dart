@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:meals_app/category_screen.dart';
 
 import 'favorites_screen.dart';
+import 'package:meals_app/main_drawer.dart';
 
 class TabScreen extends StatefulWidget {
   const TabScreen({Key? key}) : super(key: key);
@@ -34,6 +35,7 @@ class _TabScreenState extends State<TabScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: MainDrawer(),
       appBar: AppBar(
         title: Text(_pages[_selectedPageIndex]['title'] as String),
       ),
