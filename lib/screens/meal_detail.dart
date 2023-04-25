@@ -4,6 +4,7 @@ import 'package:meals_app/dummy_data.dart';
 class MealDetail extends StatelessWidget {
   const MealDetail({super.key});
   static const routName = '/MealDetail';
+
   Widget plaseForDetails(Widget child) {
     return Container(
       decoration: BoxDecoration(
@@ -23,9 +24,7 @@ class MealDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final routesArg = ModalRoute.of(context)!.settings.arguments as String;
-    final selectedMeal = DUMMY_MEALS.firstWhere((meal) {
-      return meal.id == routesArg;
-    });
+    final selectedMeal = DUMMY_MEALS.firstWhere((meal) => meal.id == routesArg);
 
     return Scaffold(
         appBar: AppBar(title: Text(selectedMeal.title)),
@@ -74,6 +73,12 @@ class MealDetail extends StatelessWidget {
               ))
             ],
           ),
+        ),
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.delete),
+          onPressed: () {
+            Navigator.of(context).pop(routesArg);
+          },
         ));
   }
 }

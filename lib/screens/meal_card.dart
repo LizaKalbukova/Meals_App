@@ -4,23 +4,21 @@ import 'package:meals_app/models/meal.dart';
 import 'meal_detail.dart';
 
 class MealCard extends StatelessWidget {
-  final List<String> ingredients;
   final String id;
   final String imageUrl;
   final String title;
   final int duration;
   final Affordability affordability;
   final Complexity complexity;
-
-  MealCard({
-    required this.ingredients,
-    required this.id,
-    required this.imageUrl,
-    required this.title,
-    required this.duration,
-    required this.affordability,
-    required this.complexity,
-  });
+  final Function removeItem;
+  MealCard(
+      {required this.id,
+      required this.imageUrl,
+      required this.title,
+      required this.duration,
+      required this.affordability,
+      required this.complexity,
+      required this.removeItem});
 
   String get complexText {
 //  if (complexity == Complexity.Simple){
@@ -66,28 +64,38 @@ class MealCard extends StatelessWidget {
 
   void inkCard(BuildContext context) {
     /// onTap
-    Navigator.pushNamed(context, '/MealDetail', arguments: id);
+    Navigator.pushNamed(
+      context,
+      MealDetail.routName,
+      arguments: id,
+    ).then((result) => {
+          if (result != null) {removeItem(result)}
+        });
   }
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-        onTap: () {
-          inkCard(context);
-        },
+        onTap: () => inkCard(context),
         child: Card(
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
           elevation: 4,
           margin: EdgeInsets.all(10),
-          child: Column(children: [
+          child: Column(children: <Widget>[
             Stack(
-              children: [
-                Image.network(
-                  imageUrl,
-                  height: 250,
-                  fit: BoxFit.cover,
-                  width: double.infinity,
+              children: <Widget>[
+                ClipRRect(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(15),
+                    topRight: Radius.circular(15),
+                  ),
+                  child: Image.network(
+                    imageUrl,
+                    height: 250,
+                    fit: BoxFit.cover,
+                    width: double.infinity,
+                  ),
                 ),
                 Positioned(
                   bottom: 20,

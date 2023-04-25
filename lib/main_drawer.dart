@@ -40,10 +40,11 @@ class MainDrawer extends StatelessWidget {
           ),
           SizedBox(height: 20),
           listTileBuilder('Meals', Icons.restaurant, () {
-            Navigator.of(context).pushNamed('/');
+            Navigator.of(context).pushReplacementNamed(
+                '/'); // замість pushNamed щоб наш стек не заповнювався постійно, а щоб екрани видалялися і замінювалися поточні
           }),
           listTileBuilder('Filters', Icons.settings, () {
-            Navigator.of(context).pushNamed(FilteredScreen.routName);
+            Navigator.of(context).pushReplacementNamed(FilteredScreen.routName);
           })
         ],
       ),
